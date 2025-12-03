@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # FinFlow Analytics | Smart Financial Tracking & Goal Management
 
 > **Status:** 🚧 Backend Integration & React Architecture in Progress
@@ -43,3 +44,7 @@ El diseño prioriza la claridad financiera. Se utiliza una paleta de colores azu
 ---
 *Desarrollado por lautaro Oyarzun*
 *Focus: Full Stack Development, UX/UI & Data Engineering*
+=======
+# finflow-demoux
+Demo UX/UI
+>>>>>>> fd9b092aa04c7723b66b04edd93737f14763c633
