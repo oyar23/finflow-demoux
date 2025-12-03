@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard – FinFlow Analytics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: "class", theme: { extend: { colors: { primary: "#4361ee" }, fontFamily: { display: ["Manrope", "sans-serif"] } } } };
+  </script>
+  <style>
+    .progress-ring__circle { transition: stroke-dashoffset .35s; transform: rotate(-90deg); transform-origin: 50% 50%; }
+    .toast { @apply fixed bottom-6 right-6 bg-slate-800 text-white px-6 py-4 rounded-xl shadow-2xl z-50 opacity-0 invisible transition-all duration-300; }
+    .toast.show { @apply opacity-100 visible; }
+  </style>
+</head>
+<body class="font-display bg-slate-900 text-slate-200 min-h-screen">
+
+  <!-- Header fijo -->
+  <header class="fixed inset-x-0 top-0 z-50 bg-slate-900/90 backdrop-blur-xl border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-lg bg-primary flex items-center justify-center">
+          <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        </div>
+        <span class="text-xl font-bold">FinFlow Analytics</span>
+      </a>
+      <button onclick="showDemoToast()" class="text-sm bg-slate-800 px-5 py-2.5 rounded-lg hover:bg-slate-700 transition">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main class="pt-24 px-6 max-w-7xl mx-auto pb-20">
+
+    <h1 class="text-4xl font-bold mb-2">Hola de nuevo!</h1>
+    <p class="text-slate-400 mb-10">Este es tu progreso hacia <span class="text-primary font-bold">ESPAÑA 2027</span></p>
+
+    <!-- Progreso principal -->
+    <div class="grid lg:grid-cols-3 gap-8 mb-12">
+      <div class="lg:col-span-2 bg-slate-800/80 backdrop-blur rounded-3xl p-10 border border-slate-700">
+        <h2 class="text-2xl font-bold mb-8">Progreso General</h2>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div class="text-center">
+            <div class="relative w-64 h-64 mx-auto">
+              <svg class="w-full h-full" viewBox="0 0 36 36">
+                <circle cx="18" cy="18" r="15.9155" fill="none" stroke="#1e293b" stroke-width="4"/>
+                <circle cx="18" cy="18" r="15.9155" fill="none" stroke="#4361ee" stroke-width="4" stroke-dasharray="87, 100" class="progress-ring__circle"/>
+              </svg>
+              <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span class="text-6xl font-bold text-primary">87%</span>
+                <span class="text-slate-400 text-lg mt-2">$4.350 / $5.000</span>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between text-sm mb-2"><span>Ahorrado este mes</span><span class="text-green-400 font-bold">+$820</span></div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden"><div class="h-full bg-green-500 w-4/5"></div></div>
+            </div>
+            <div>
+              <div class="flex justify-between text-sm mb-2"><span>Invertido</span><span class="text-primary font-bold">$12.800</span></div>
+              <div class="h-2 bg-slate-700 rounded-full overflow-hidden"><div class="h-full bg-primary w-3/5"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-800/80 backdrop-blur rounded-3xl p-8 border border-slate-700 text-center">
+        <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600" alt="España" class="w-full h-48 object-cover rounded-2xl mb-6">
+        <h3 class="text-xl font-bold mb-2">Viaje a España 2027</h3>
+        <p class="text-slate-400 text-sm">Faltan 19 meses</p>
+        <button onclick="showDemoToast()" class="mt-6 w-full bg-primary/20 hover:bg-primary/30 text-primary font-bold py-3 rounded-xl transition">Editar meta</button>
+      </div>
+    </div>
+
+    <!-- Acciones rápidas -->
+    <div class="flex flex-wrap gap-4 justify-center">
+      <button onclick="showDemoToast()" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-2xl font-bold shadow-lg transition transform hover:scale-105">+ Nuevo aporte</button>
+      <button onclick="showDemoToast()" class="bg-slate-700 hover:bg-slate-600 text-white px-8 py-4 rounded-2xl font-bold transition">Ver inversiones</button>
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="toast">
+    Backend en proceso. Estás viendo el prototipo UX/UI.
+  </div>
+
+  <script>
+    function showDemoToast(msg = "Backend en proceso. Estás viendo el prototipo UX/UI.") {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      setTimeout(() => t.classList.remove("show"), 4000);
+    }
+  </script>
+</body>
+</html>
