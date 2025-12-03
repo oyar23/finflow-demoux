@@ -1,8 +1,7 @@
-<<<<<<< HEAD
 # FinFlow Analytics | Smart Financial Tracking & Goal Management
 
 > **Status:** 🚧 Backend Integration & React Architecture in Progress
-> **Live UX/UI Demo:** []
+> **Live UX/UI Demo:** [https://finflow-demoux.vercel.app/]
 
 ## ⚠️ Current State & Demo Context
 **Please Note:** The live link above demonstrates the **High-Fidelity UX/UI Prototype**.
